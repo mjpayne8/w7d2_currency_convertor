@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Currency Convertor</title>
+    <script src="./js/bundle.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <h1>Currency Convertor</h1>
+      <p>Exchange Euro to</p>
+      <select v-model="rate">
+        <option v-for="(value, keys) in currencies" :value="value">{{keys}}</option>
+      </select>
+      <label for="amount-of-euros">Euros to Exchange</label>
+      <input id="amount-of-euros" type="number" v-model="euroAmount">
+      <p>{{amount}} in Currency</p>
+    </div>
+  </body>
+</html>
