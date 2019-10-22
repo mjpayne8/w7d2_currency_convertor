@@ -7,16 +7,28 @@ document.addEventListener('DOMContentLoaded', () => {
       currencies: {},
       currencyKeys: [],
       rate: 0,
-      euroAmount: 0
+      euroAmount: 0,
+      direction: ''
     },
     computed: {
       amount: function(){
         return this.rate*this.euroAmount
+      },
+      amountToEuros: function(){
+        return this.euroAmount/this.rate
       }
     },
     mounted(){
       this.getRates();
       // this.getKeys();
+    },
+    filters: {
+      rounded: function(value){
+        if (isNaN(value)){
+          return 0
+        }
+        return value.toFixed(2)
+      }
     },
     methods: {
       getRates: function(){

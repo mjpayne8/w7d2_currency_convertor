@@ -8,13 +8,22 @@
   <body>
     <div id="app">
       <h1>Currency Convertor</h1>
-      <p>Exchange Euro to</p>
+      <p>Exchange Euro</p>
+      <select v-model="direction">
+        <option value="to">to</option>
+        <option value="from">from</option>
+      </select>
       <select v-model="rate">
         <option v-for="(value, keys) in currencies" :value="value">{{keys}}</option>
       </select>
-      <label for="amount-of-euros">Euros to Exchange</label>
+      <label for="amount-of-euros">Amount to Exchange</label>
       <input id="amount-of-euros" type="number" v-model="euroAmount">
-      <p>{{amount}} in Currency</p>
+      <div v-if = "direction==='to'">
+      <p>{{amount | rounded}} in Currency</p>
+      </div>
+      <div v-if = "direction==='from'">
+      <p>{{amountToEuros | rounded}} in Currency</p>
+      </div>
     </div>
   </body>
 </html>
